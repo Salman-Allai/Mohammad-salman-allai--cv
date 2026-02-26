@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mohammad Salman Allai — Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #111111;
+      --paper: #f6f3ee;
+      --accent: #1a4f8a;
+      --accent2: #c8410a;
+      --muted: #5a5550;
+      --line: #d5cfc5;
+      --sidebar-bg: #1a1a2e;
+      --sidebar-text: #e8e4dc;
+      --sidebar-muted: #9b97a0;
+    }
+
+    body {
+      background: #e8e3da;
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 40px 16px;
+    }
+
+    .resume {
+      width: 100%;
+      max-width: 960px;
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+      animation: fadeUp 0.6s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── SIDEBAR ─────────────────────────────── */
+    .sidebar {
+      background: var(--sidebar-bg);
+      color: var(--sidebar-text);
+      padding: 40px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .avatar-block {
+      text-align: center;
+    }
+
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1a4f8a, #c8410a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 900;
+      color: #fff;
+      margin: 0 auto 12px;
+      letter-spacing: -1px;
+    }
+
+    .sidebar-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .sidebar-title {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--sidebar-muted);
+      margin-top: 6px;
+    }
+
+    .s-section {}
+
+    .s-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #c8410a;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .s-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 12.5px;
+      color: var(--sidebar-muted);
+    }
+
+    .contact-item .icon {
+      font-size: 14px;
+      min-width: 18px;
+      margin-top: 1px;
+    }
+
+    .contact-item a {
+      color: #7eb8f7;
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .contact-item a:hover { text-decoration: underline; }
+
+    /* Skill bars */
+    .skill-item {
+      margin-bottom: 12px;
+    }
+
+    .skill-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--sidebar-text);
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .skill-bar {
+      height: 3px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .skill-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #1a4f8a, #7eb8f7);
+      border-radius: 2px;
+      animation: growBar 1.2s ease both;
+    }
+
+    @keyframes growBar {
+      from { transform: scaleX(0); transform-origin: left; }
+      to   { transform: scaleX(1); transform-origin: left; }
+    }
+
+    /* Tags */
+    .tag-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .s-tag {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 2px;
+      color: var(--sidebar-muted);
+      letter-spacing: 0.3px;
+    }
+
+    /* Education in sidebar */
+    .edu-item {
+      margin-bottom: 16px;
+    }
+
+    .edu-degree {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--sidebar-text);
+      line-height: 1.3;
+    }
+
+    .edu-school {
+      font-size: 11.5px;
+      color: var(--sidebar-muted);
+      margin-top: 2px;
+    }
+
+    .edu-year {
+      font-size: 11px;
+      color: #c8410a;
+      margin-top: 2px;
+    }
+
+    /* Certifications */
+    .cert-item {
+      margin-bottom: 10px;
+    }
+
+    .cert-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--sidebar-text);
+      line-height: 1.4;
+    }
+
+    .cert-date {
+      font-size: 11px;
+      color: var(--sidebar-muted);
+    }
+
+    /* ─── MAIN ───────────────────────────────── */
+    .main {
+      background: var(--paper);
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* Header top */
+    .main-header {
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 20px;
+    }
+
+    .main-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .main-name span { color: var(--accent); }
+
+    .main-title {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* Section */
+    .m-section {}
+
+    .m-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .m-label::after {
+      content: '';
+      flex: 1;
+      height: 1.5px;
+      background: var(--line);
+    }
+
+    /* Summary */
+    .summary-box {
+      border-left: 3px solid var(--accent);
+      padding-left: 16px;
+      font-size: 13.5px;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.75;
+    }
+
+    /* Experience */
+    .exp-item {
+      margin-bottom: 26px;
+      padding-bottom: 26px;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .exp-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .exp-role {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .exp-date {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent2);
+      background: #fdf0ea;
+      padding: 2px 8px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    .exp-company {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      padding: 0;
+    }
+
+    .exp-bullets li {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 3px 0 3px 18px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .exp-bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent2);
+      font-size: 12px;
+    }
+
+    /* Projects */
+    .project-item {
+      margin-bottom: 22px;
+      padding-bottom: 22px;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .project-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .project-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+
+    .project-bullets {
+      list-style: none;
+      padding: 0;
+    }
+
+    .project-bullets li {
+      font-size: 12.5px;
+      color: var(--muted);
+      padding: 2px 0 2px 18px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .project-bullets li::before {
+      content: '◆';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 8px;
+      top: 6px;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 11.5px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .project-link:hover { text-decoration: underline; }
+
+    /* Footer */
+    .resume-footer {
+      text-align: center;
+      font-size: 11px;
+      color: var(--line);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding-top: 8px;
+      border-top: 1px solid var(--line);
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .resume {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        padding: 32px 24px;
+      }
+      .main {
+        padding: 32px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="resume">
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar">
+
+    <div class="avatar-block">
+      <div class="avatar">MA</div>
+      <div class="sidebar-name">Mohammad<br/>Salman Allai</div>
+      <div class="sidebar-title">CS Engineer &amp; Developer</div>
+    </div>
+
+    <!-- Contact -->
+    <div class="s-section">
+      <div class="s-label">Contact</div>
+      <div class="contact-item">
+        <span class="icon">✉</span>
+        <a href="mailto:Salmanallaie@gmail.com">Salmanallaie@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="icon">✆</span>
+        <span>+91 6006214499</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">📍</span>
+        <span>Bangalore, India</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">in</span>
+        <a href="https://linkedin.com/in/Salman-Allai" target="_blank">linkedin.com/in/Salman Allai</a>
+      </div>
+      <div class="contact-item">
+        <span class="icon">⌥</span>
+        <a href="https://github.com/SalmanAllai" target="_blank">github.com/SalmanAllai</a>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="s-section">
+      <div class="s-label">Skills</div>
+      <div class="skill-item">
+        <div class="skill-name"><span>JavaScript</span><span>90%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>React.js</span><span>85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Node.js / Express</span><span>82%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Python</span><span>78%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>HTML / CSS</span><span>95%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>MongoDB</span><span>75%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+    </div>
+
+    <!-- Technologies -->
+    <div class="s-section">
+      <div class="s-label">Technologies</div>
+      <div class="tag-wrap">
+        <span class="s-tag">Next.js</span>
+        <span class="s-tag">MongoDB</span>
+        <span class="s-tag">Express.js</span>
+        <span class="s-tag">MS SQL Server</span>
+        <span class="s-tag">REST API</span>
+        <span class="s-tag">AWS</span>
+        <span class="s-tag">Google Cloud</span>
+        <span class="s-tag">GitHub</span>
+        <span class="s-tag">Postman</span>
+        <span class="s-tag">Netlify</span>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="s-section">
+      <div class="s-label">Education</div>
+      <div class="edu-item">
+        <div class="edu-degree">B.E. Computer Science &amp; Engineering</div>
+        <div class="edu-school">ACS College of Engineering, Bangalore<br/><em>CGPA: 8.0</em></div>
+        <div class="edu-year">2022 – 2026</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">Senior Secondary (XII) — PCM</div>
+        <div class="edu-school">Govt. Boys Higher Secondary School<br/>Zainakote, Srinagar, J&amp;K</div>
+        <div class="edu-year">2020 – 2021</div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div class="s-section">
+      <div class="s-label">Certifications</div>
+      <div class="cert-item">
+        <div class="cert-name">AWS Solution Architecture Job Simulation</div>
+        <div class="cert-date">Dec 2024</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-name">Build Website using Gen AI (PrepInsta)</div>
+        <div class="cert-date">Sep 2025</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-name">Machine Learning — Infosys SpringBoard</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-name">Tata GenAI Data Analytics Job Simulation</div>
+        <div class="cert-date">ID: q3ntjnffA9pDoJHo</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-name">Electronic Arts Software Engineering Simulation</div>
+        <div class="cert-date">ID: 2Lsfm56ejfxSxBhcy</div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ═══ MAIN ═══ -->
+  <main class="main">
+
+    <div class="main-header">
+      <div class="main-name">Mohammad <span>Salman</span> Allai</div>
+      <div class="main-title">Computer Science Engineer · Full-Stack Developer · AI Enthusiast</div>
+    </div>
+
+    <!-- Summary -->
+    <div class="m-section">
+      <div class="m-label">Professional Summary</div>
+      <div class="summary-box">
+        Dedicated Computer Science Engineer with a strong foundation in HTML, CSS, and JavaScript. Completed Generative AI in Website Development training from PrepInsta and Gen AI with Python from Edunet Foundation. Currently enhancing knowledge in Software Testing. Skilled in problem-solving, algorithms, and data structures, with a solid understanding of DBMS, Operating Systems, and OOPs. Passionate about creating intelligent, user-centric web applications and applying AI technologies to solve real-world challenges.
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="m-section">
+      <div class="m-label">Experience</div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">Junior Software Developer</div>
+          <div class="exp-date">Feb 2025 – Aug 2025</div>
+        </div>
+        <div class="exp-company">Zainul Abideen Technical Training Centre</div>
+        <ul class="exp-bullets">
+          <li>Developed and maintained responsive web applications using HTML, CSS, and JavaScript.</li>
+          <li>Integrated AI-driven features to enhance user experience and functionality.</li>
+          <li>Collaborated with team members on UI/UX improvements and code optimization.</li>
+          <li>Assisted in software testing and debugging for smoother project delivery.</li>
+          <li>Utilized skills in DBMS, OOPs, and problem-solving to create efficient solutions.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">Frontend Developer Intern</div>
+          <div class="exp-date">Apr 2024 – Jun 2024</div>
+        </div>
+        <div class="exp-company">Wudav Brand Stories</div>
+        <ul class="exp-bullets">
+          <li>Designed and developed interactive web interfaces using HTML, CSS, and JavaScript.</li>
+          <li>Worked closely with designers to implement responsive and user-friendly layouts.</li>
+          <li>Improved website performance and cross-browser compatibility.</li>
+          <li>Gained practical experience in frontend frameworks and teamwork in a real-world environment.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="m-section">
+      <div class="m-label">Projects</div>
+
+      <div class="project-item">
+        <div class="project-name">StudentHolic AI</div>
+        <div class="project-desc">A smart, AI-powered educational platform designed to enhance learning through multimedia and interactivity.</div>
+        <ul class="project-bullets">
+          <li>Built with Next.js for both frontend and backend, ensuring a smooth and responsive user experience.</li>
+          <li>Integrated Python-based features to generate educational videos from user prompts.</li>
+          <li>Developed a Telegram bot to deliver video content seamlessly and improve accessibility.</li>
+          <li>Implemented PDF analysis functionality that extracts content and generates custom MCQs in easy, medium, and hard levels.</li>
+          <li>Leveraged cloud storage and real-time video rendering to support a dynamic content pipeline.</li>
+        </ul>
+        <a class="project-link" href="#">🎥 Live Demo: Watch Demo</a>
+      </div>
+
+      <div class="project-item">
+        <div class="project-name">Zainul Abideen Technical Training Centre Website</div>
+        <div class="project-desc">Full-stack institutional website for a NIELIT, MSME-approved, and NCPUL-recognized institute.</div>
+        <ul class="project-bullets">
+          <li>Designed using HTML, CSS, and JavaScript with a responsive and user-friendly interface.</li>
+          <li>Built a Node.js and Express.js backend for handling contact forms and data management.</li>
+          <li>Integrated WhatsApp API for direct communication between students and the institute.</li>
+          <li>Implemented course display, gallery, testimonials, and contact modules.</li>
+          <li>Focused on performance optimization and secure backend operations.</li>
+        </ul>
+      </div>
+
+      <div class="project-item">
+        <div class="project-name">Portfolio Website</div>
+        <div class="project-desc">Personal portfolio built with React.js to showcase projects, skills, and achievements in an interactive and responsive format.</div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-name">Gully Cricket Batting Order Generator</div>
+        <div class="project-desc">A fun mobile app that dynamically generates batting orders for cricket matches using randomization and simple algorithms.</div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-name">Tourist Guide App — Kashur Guide</div>
+        <div class="project-desc">A tourist navigation app with AI features to recommend attractions, provide directions, and enhance user experience for travelers in Kashmir.</div>
+      </div>
+
+    </div>
+
+    <div class="resume-footer">Mohammad Salman Allai &nbsp;·&nbsp; Resume 2026</div>
+
+  </main>
+
+</div>
+
+</body>
+</html>
